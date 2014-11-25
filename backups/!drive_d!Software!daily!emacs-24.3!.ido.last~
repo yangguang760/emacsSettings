@@ -1,0 +1,48 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("d:/Software/Encyclopadia/" . "Ultimate Reference Suite/")
+ ("d:/Software/" . "Encyclopadia/")
+ ("d:/" . "Software/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "d:/Software/daily/emacs-24.3/.emacs.d/"
+ "d:/Software/Encyclopadia/Ultimate Reference Suite/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ "COPYING"
+ "error.log"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("d:/Software/daily/emacs-24.3/org/" (21619 15964 0 0) "todos.org" "plans.org" "notes.org" "../" "./")
+
+ ("d:/Software/daily/" (21616 1517 0 0) "Vim/" "emacs-24.3 - Copy/" "emacs-24.3/" "11game/" "../" "./")
+
+ ("d:/Software/daily/emacs-24.3/" (21616 44201 0 0) "site-lisp/" "README.W32" "README" "lisp/" "leim/" "info/" "etc/" "COPYING" "BUGS" "bin/" ".recentf" ".ido.last" ".gnucash/" ".emacs~" ".emacs.d/" ".emacs-places" ".bash_history" "../" "./")
+
+ ("d:/Software/daily/emacs-24.3/.emacs.d/" (21618 36392 0 0) "YANG.org" "YANG.el" "starter-kit.org" "starter-kit.el" "starter-kit-yasnippet.org" "starter-kit-yasnippet.el" "starter-kit-scala.org" "starter-kit-ruby.org" "starter-kit-registers.org" "starter-kit-registers.el" "starter-kit-python.org" "starter-kit-publish.org" "starter-kit-perl.org" "starter-kit-org.org" "starter-kit-misc.org" "starter-kit-misc.el" "starter-kit-misc-recommended.org" "starter-kit-lisp.org" "starter-kit-js.org" "starter-kit-haskell.org" "starter-kit-haskell.el" "starter-kit-gnus.org" "starter-kit-g-client.org" "starter-kit-eshell.org" "starter-kit-defuns.org" "starter-kit-defuns.el" "starter-kit-bindings.org" "starter-kit-bindings.el" "src/" "snippets/" "smex-items" "server/" "README" "places" "Makefile" "init.el" "elpa/" "custom.el" "COPYING" "backups/" "auto-save-list/" ".gitignore" ".git/" "#YANG.org#" "#starter-kit-bindings.org#" "../" "./")
+
+ ("d:/Software/daily/emacs-24.3/.emacs.d/elpa/" (21617 40833 0 0) "yasnippet-20141117.327/" "undo-tree-20140509.522/" "smex-20141027.245/" "shm-20141011.508/" "s-20140910.334/" "powerline-20141117.634/" "popup-20141002.320/" "pkg-info-20140610.630/" "paredit-20140128.1248/" "ox-reveal-20141112.644/" "org-pomodoro-readme.txt" "org-pomodoro-20140908.646/" "org-bullets-readme.txt" "mustache-20131117.1407/" "moe-theme-20141106.125/" "magit-readme.txt~" "magit-readme.txt" "magit-20141115.1601/" "ido-ubiquitous-20141118.1234/" "idle-highlight-mode-20120920.948/" "htmlize-20130207.1202/" "ht-20140122.1555/" "haskell-mode-20141120.1258/" "goto-chg-20131228.1459/" "gntp-20141024.1950/" "git-rebase-mode-20140928.1547/" "git-commit-mode-20141014.1634/" "ghc-20141118.1609/" "flycheck-20141117.1029/" "find-file-in-project-20140603.1619/" "evil-org-readme.txt" "evil-org-20141002.253/" "evil-leader-readme.txt" "evil-leader-20140606.543/" "evil-20141119.205/" "epl-20140823.609/" "dash-20141106.455/" "color-theme-20080305.34/" "bbdb-20140830.2031/" "autopair-20140825.427/" "archives/" "alert-20141112.1044/" "ace-jump-mode-20140616.115/" "ace-jump-buffer-readme.txt" "ace-jump-buffer-20141107.1317/" ".gitignore" "../" "./")
+
+ ("d:/Software/daily/emacs-24.3/.emacs.d/elpa/evil-20141119.205/" (21617 34497 0 0) "version.info" "macros.info" "fdl-1.3.info" "evil.info" "evil.elc" "evil.el" "evil-vars.elc" "evil-vars.el" "evil-types.elc" "evil-types.el" "evil-states.elc" "evil-states.el" "evil-search.elc" "evil-search.el" "evil-repeat.elc" "evil-repeat.el" "evil-pkg.el" "evil-maps.el" "evil-macros.elc" "evil-macros.el" "evil-integration.elc" "evil-integration.el" "evil-ex.elc" "evil-ex.el" "evil-digraphs.elc" "evil-digraphs.el" "evil-core.elc" "evil-core.el" "evil-common.elc" "evil-common.el" "evil-commands.elc" "evil-commands.el" "evil-command-window.elc" "evil-command-window.el" "evil-autoloads.el~" "evil-autoloads.el" "dir" "../" "./")
+
+ ("d:/Software/Encyclopadia/Ultimate Reference Suite/" (21348 36218 0 0) "workspace/" "vm.txt" "Uninstall_Ultimate Reference Suite/" "tray.dll" "starter.ini" "starter.ico" "starter.exe" "resource/" "readme.txt" "jre/" "jars/" "index/" "imagefiles/" "html/" "help/" "error.log" "docs/" "dictionary.ini" "dictionary.ico" "dictionary.exe" "data/" "conf/" "BCDUtil.dll" ".webrenderer/" "../" "./")
+
+ ("d:/Software/Encyclopadia/" (21348 33989 0 0) "Ultimate Reference Suite/" "../" "./")
+
+ ("d:/Software/" (21543 65104 0 0) "Microsoft Office/" "investment/" "Encyclopadia/" "development/" "dailyTools/" "daily/" "../" "./")
+
+ ("d:/Software/dailyTools/" (21609 35142 0 0) "\275\360\325빤\276\337\317\344/" "\315\370\311\317˰\316\361\276\326\304\311˰\310˶\313/" "С˵\317\302\324\330\324Ķ\301\306\367\302\314ɫ\260\346/" "Youdao/" "x64/" "Wind.NET.Client/" "vimnew/" "utorrent_3.2.2.28500/" "UltraISO.exe" "TreeSheets/" "Totalcmd/" "Thunder/" "SumatraPDF-2.6-x64_DownG.com/" "Shark007/" "qqint/" "QQ6.0 \314\345\321\351\260\346(11680)\264\277\276\273\260\346(\316\336Q\320\343)/" "QQ5.4/" "Pure Codec/" "ProcrastiTracker/" "mybase/" "Moneydance/" "Mindjet/" "ListaryPortable/" "liebao/" "KClockx64 - Shortcut.lnk" "KClock.exe" "IBM/" "hypersnap/" "gvimim-master/" "GoGo Tester 2.2-0/" "goagent-goagent-2a11a2c/" "gnucash/" "FUJIFILM/" "Foxit_PhantomPDF_Business_6.0.3.524_Portable/" "Foobar2000/" "flux/" "EccoPro/" "ECCO/" "DriverGenius2013/" "dm2/" "Ditto/" "CrystalReports/" "crack/" "cooleditprolvse/" "AutoHotKey \300\301\310˰\374/" "AutoHotkey/" "apabi/" "Anki/" "AmazingStore/" "AliWangWang/" "Adobe Photoshop CS5/" "Aboboo2.2.2/" "11gamie/" "../" "./")
+
+ ("d:/Software/dailyTools/liebao/" (21613 38866 0 0) "log/" "liebao.exe" "Dictionaries/" "debug.log" "browserpacket.xml" "5.1.73.9040/" "../" "./")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t
