@@ -1,32 +1,34 @@
-* Tasks
-** TODO 
-  [2014-11-24 Mon]
-  dksjfksdjkfjdskfjdksjfks
-jkdsjfkdsjfksjkfsd
-skjfkdsjfkdsk
-* kdsjfkdsjk
-CLOCK: [2014-11-24 Mon 20:17]--[2014-11-24 Mon 20:42] =>  0:25
-#+BEGIN_SRC 
-skjfksk
+#+TAGS:  OM(o) DM(d) TM(t) HY(h) Y(y) ACHIEVE(a)
+#+SEQ_TODO: TODO TRACKING DONE
+* Personal
+** Mental issues
+*** Knowledge
+**** IT knowledge 
+***** TODO haskell
+**** Finance knowledge
+***** CFA level II
+****** TRACKING [#B] plan
+***** FRM review
+****** TRACKING conclude the emulation tech
+**** English knowledge
+***** TRACKING [#A] plan and track
+**** Education
+***** TRACKING [#A] pre-paper
+**** Self-management
+***** TRACKING [#A] org-mode
+***** TRACKING [#B] anki
+*** Relationship
+**** With Family
+**** With Honey
+***** TRACKING prepare the anniversery gift
+** Physical issues
+*** bodybuilding
+**** TODO plan and track
+* Business
+** Job hunting
+To find a proper job, I need to collect information, get the skill, the authority, write the resume,
+*** Resume
+*** Information search
+*** skills need
+*** authority
 
-
-#+END_SRC
-#+BEGIN_EXAMPLE
-
-#+END_EXAMPLE
-#+BEGIN_EXAMPLE
-
-#+END_EXAMPLE
-* my need for org-mode
-** notes-taking
-*** write a plugin to capture screens
-** mobile and sync -> phone
-*** install the mobileorg to the phone
-*** setting the sync
-** GTD
-*** plan files
-+ plan.org
-+ todo.org
-*** plan tags and states
-*** key bindings
-** git the .emacs

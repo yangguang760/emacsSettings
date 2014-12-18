@@ -1,33 +1,235 @@
-* Tasks
-** TODO 
-  [2014-11-24 Mon]
-  dksjfksdjkfjdskfjdksjfks
-jkdsjfkdsjfksjkfsd
-skjfkdsjfkdsk
-* kdsjfkdsjk
-CLOCK: [2014-11-24 Mon 20:17]--[2014-11-24 Mon 20:42] =>  0:25
-#+BEGIN_SRC 
-skjfksk
+#+TAGS:  APPOINTMENT(p)  UNPLANNED(u)  ARCHIVE(a)
+#+PROPERTY: Effort_ALL  0:10 0:20 0:30 1:00 2:00 4:00 6:00 8:00
+#+COLUMNS: %38ITEM(Details) %TAGS(Context) %7TODO(To Do) %5Effort(Time){:} %6CLOCKSUM{Total}
+#+SEQ_TODO: TODO TRACKING DONE
+* Inbox
+* Personal
+** Mental issues
+*** Knowledge
+**** IT knowledge
+***** quantlib
+****** TODO lecture 1-10 [1/10]
+CLOCK: [2014-12-02 Tue 10:19]--[2014-12-02 Tue 10:44] =>  0:25
+CLOCK: [2014-12-01 Mon 15:08]--[2014-12-01 Mon 15:33] =>  0:25
+CLOCK: [2014-12-01 Mon 14:37]--[2014-12-01 Mon 15:02] =>  0:25
+CLOCK: [2014-11-28 Fri 14:28]--[2014-11-28 Fri 14:53] =>  0:25
++ [X] 1
++ [ ] 2
++ [ ] 3
++ [ ] 4
++ [ ] 5
++ [ ] 6
++ [ ] 7
++ [ ] 8
++ [ ] 9
++ [ ] 10
+***** haskellk
+****** Edx course
+******* DONE haskell 6                                        :ARCHIVE:
+CLOSED: [2014-11-27 Thu 15:50] DEADLINE: <2014-12-03 Wed>
+CLOCK: [2014-11-27 Thu 14:47]--[2014-11-27 Thu 15:49] =>  1:02
+******* DONE haskell 7
+CLOSED: [2014-12-04 Thu 16:08] DEADLINE: <2014-12-09 Tue>
+CLOCK: [2014-12-03 Wed 10:59]--[2014-12-03 Wed 11:24] =>  0:25
+CLOCK: [2014-12-03 Wed 10:03]--[2014-12-03 Wed 10:28] =>  0:25
+******* TODO haskell 8
+DEADLINE: <2014-12-09 Tue>
+CLOCK: [2014-12-04 Thu 22:37]--[2014-12-04 Thu 23:02] =>  0:25
+CLOCK: [2014-12-04 Thu 22:11]--[2014-12-04 Thu 22:36] =>  0:25
+******* TODO haskell 9
+DEADLINE: <2014-12-16 Tue>
+******* TODO haskell 10
+DEADLINE: <2014-12-16 Tue>
+******* TODO haskell 11
+DEADLINE: <2014-12-22 Mon>
+******* TODO haskell 12
+DEADLINE: <2014-12-30 Tue>
+****** emacs mode learning
+**** Finance knowledge
+***** CFA level II
+****** DONE conclude the notes
+CLOSED: [2014-11-30 Sun 20:54] DEADLINE: <2014-12-03 Wed> SCHEDULED: <2014-12-01 Mon>
+CLOCK: [2014-11-30 Sun 19:44]--[2014-11-30 Sun 20:09] =>  0:25
+CLOCK: [2014-11-30 Sun 20:15]--[2014-11-30 Sun 20:40] =>  0:25
+:PROPERTIES:
+:ID:       4b77e095-1691-405b-8391-3c8ae29fcd21
+:END:
+****** TODO measure the schedule
+DEADLINE: <2014-12-03 Wed> SCHEDULED: <2014-12-01 Mon>
+:PROPERTIES:
+:ID:       3cd746ad-4027-4271-8551-91b87f3f724f
+:END:
+***** FRM review
+****** DONE conclude the emulation tech
+CLOSED: [2014-11-30 Sun 16:06] SCHEDULED: <2014-11-28 Fri> DEADLINE: <2014-11-30 Sun>
+:PROPERTIES:
+:ID:       ed0e588a-6e54-4445-b3b2-1fa6b5f9c1ed
+:END:
+**** English knowledge
+***** speaking and listening
+****** TODO listening to effortless English, everyday on the bus
+SCHEDULED: <2014-11-29 Sat +1d>
+- State "DONE"       from "TRACKING"   [2014-11-28 Fri 14:20] \\
+  done
+- State "DONE"       from "TRACKING"   [2014-11-27 Thu 09:04] \\
+  First day, nice begin
+- State "DONE"       from "TRACKING"   [2014-11-27 Thu 02:27] \\
+  Set the plan
+:PROPERTIES:
+:STYLE: habit
+:LAST_REPEAT: [2014-11-28 Fri 14:20]
+:END:
+****** TODO listening to whatever English when using computer
+SCHEDULED: <2014-11-28 Fri +1d>
+- State "DONE"       from "TRACKING"   [2014-11-27 Thu 20:48] \\
+  First day, just soso
+- State "DONE"       from "TRACKING"   [2014-11-27 Thu 02:28] \\
+  set the plan
+:PROPERTIES:
+:STYLE: habit
+:LAST_REPEAT: [2014-11-27 Thu 20:48]
+:END:
+****** TODO complete the fluent english, 1 unit per day
+SCHEDULED: <2014-11-28 Fri +1d>
+- State "DONE"       from "TRACKING"   [2014-11-29 Sat 00:33]
+CLOCK: [2014-11-28 Fri 23:46]--[2014-11-29 Sat 00:11] =>  0:25
+- State "DONE"       from "TRACKING"   [2014-11-27 Thu 21:33] \\
+  Book 1, Section 3 completed
+CLOCK: [2014-11-27 Thu 21:14]--[2014-11-27 Thu 21:32] =>  0:18
+:PROPERTIES:
+:STYLE: habit
+:LAST_REPEAT: [2014-11-29 Sat 00:33]
+:END:
+**** Education
+***** [#A] pre-paper
+****** DONE [#A] findout the idea
+CLOSED: [2014-11-30 Sun 13:14] DEADLINE: <2014-11-30 Sun> SCHEDULED: <2014-11-25 Tue>
+CLOCK: [2014-11-29 Sat 16:29]--[2014-11-29 Sat 16:54] =>  0:25
+CLOCK: [2014-11-29 Sat 15:43]--[2014-11-29 Sat 16:08] =>  0:25
+CLOCK: [2014-11-29 Sat 15:12]--[2014-11-29 Sat 15:37] =>  0:25
+:PROPERTIES:
+:ID:       3a190aa5-b91c-4563-a377-688db7490b4e
+:END:
+****** DONE [#A] write the prepaper
+CLOSED: [2014-11-30 Sun 13:14] DEADLINE: <2014-11-30 Sun> SCHEDULED: <2014-11-25 Tue>
+:PROPERTIES:
+:ID:       13b9d009-7a71-4598-9a3c-c37a8d4e945f
+:END:
+**** Self-management
+***** org-mode
+****** TODO write the plugin to capture screnn
+SCHEDULED: <2014-12-04 Thu>
+:PROPERTIES:
+:ID:       77d89d42-3f59-46c7-a85b-fa7a970debd4
+:END:
+****** DONE setting the org-mode GTD systemk 
+CLOSED: [2014-11-25 Tue 22:59] DEADLINE: <2014-11-25 Tue> SCHEDULED: <2014-11-25 Tue>
+:PROPERTIES:
+:ID:       82821f1e-5366-4176-8983-ba865255f57a
+:END:
+****** DONE write the template of notes.org
+CLOSED: [2014-11-26 Wed 16:44] SCHEDULED: <2014-11-25 Tue> DEADLINE: <2014-11-25 Tue>
+:PROPERTIES:
+:ID:       5e40e9d3-816d-4a9c-9255-de6898858866
+:END:
+****** DONE transfer the emacs to office computer
+CLOSED: [2014-11-30 Sun 16:06] DEADLINE: <2014-12-01 Mon> SCHEDULED: <2014-12-01 Mon>
+CLOCK: [2014-11-27 Thu 10:10]--[2014-11-27 Thu 10:56] =>  0:46
+:PROPERTIES:
+:ID:       2bbfdece-9823-46c8-89f2-54521cbc8131
+:END:
+***** [#B] anki                                               :UNPLANNED:
+*** Relationship
+**** With Family
+**** With Honey
+***** TRACKING prepare the gift for the anniversary
+DEADLINE: <2037-12-08 Tue 23:00> SCHEDULED: <2014-11-25 Tue 22:00>
+CLOCK: [2014-11-28 Fri 20:30]--[2014-11-28 Fri 21:19] =>  0:49
+CLOCK: [2014-11-25 Tue 21:42]--[2014-11-25 Tue 22:07] =>  0:25
+:PROPERTIES:
+:ID:       dd721a2b-536e-46d5-bcf6-b1e203b389a1
+:END:
+** Physical issues
+*** bodybuilding
+**** diet control
+***** TODO get less diet and record
+SCHEDULED: <2014-11-30 Sun +1d>
+- State "DONE"       from "TRACKING"   [2014-11-30 Sun 19:43] \\
+  二两饭两个菜
+- State "DONE"       from "TRACKING"   [2014-11-28 Fri 23:45] \\
+  一个馒头 两份菜
+- State "DONE"       from "TRACKING"   [2014-11-27 Thu 20:49] \\
+  一个馒头一个玉米，两份菜，给自己点赞。
+:PROPERTIES:
+:STYLE: habit
+:LAST_REPEAT: [2014-11-30 Sun 19:43]
+:END:
+**** excercise
+***** TODO plant
+SCHEDULED: <2014-11-29 Sat +1d>
+- State "DONE"       from "TRACKING"   [2014-11-28 Fri 20:33] \\
+  3m10s
+- State "DONE"       from "TRACKING"   [2014-11-27 Thu 20:48] \\
+  3m5s
+:PROPERTIES:
+:STYLE:    habit
+:LAST_REPEAT: [2014-11-28 Fri 20:33]
+:END:
+***** TODO Breast muscle
+SCHEDULED: <2014-11-28 Fri +1d>
+- State "DONE"       from "TRACKING"   [2014-11-27 Thu 21:44] \\
+  10 俯卧撑
+:PROPERTIES:
+:STYLE: habit
+:LAST_REPEAT: [2014-11-27 Thu 21:44]
+:END:
+***** TODO Back muscle
+SCHEDULED: <2014-11-28 Fri +1d>
+- State "DONE"       from "TRACKING"   [2014-11-27 Thu 21:47] \\
+  20 拉背
+:PROPERTIES:
+:LAST_REPEAT: [2014-11-27 Thu 21:47]
+:END:
+***** TODO Bottom muscle
+SCHEDULED: <2014-11-30 Sun +1d>
+- State "DONE"       from "TRACKING"   [2014-11-30 Sun 19:43] \\
+  20下蹲
+- State "DONE"       from "TRACKING"   [2014-11-29 Sat 00:36] \\
+  20 深蹲
+- State "DONE"       from "TRACKING"   [2014-11-27 Thu 20:52] \\
+  20 深蹲
+:PROPERTIES:
+:STYLE: habit
+:LAST_REPEAT: [2014-11-30 Sun 19:43]
+:END:      
+* Business
+** Job hunting                                                   :UNPLANNED:
+To find a proper job, I need to collect information, get the skill, the authority, write the resume,
+*** Resume
+*** Information search
+*** skills need
+*** authorit
+* misc-todos
+** DONE get books into kindle <2014-11-27 Thu>                     :ARCHIVE:
+CLOSED: [2014-11-27 Thu 09:58]
+CLOCK: [2014-11-27 Thu 09:24]--[2014-11-27 Thu 09:49] =>  0:25
+* Reviews
+** TODO Weekly review
+SCHEDULED: <2014-11-30 Sun +1w>
+** TODO Monthly review
+SCHEDULED: <2014-12-01 Mon +1m>
+** TODO Half-year review
+SCHEDULED: <2015-05-27 Wed +6m>
+- State "DONE"       from "TRACKING"   [2014-11-28 Fri 14:22]
+:PROPERTIES:
+:LAST_REPEAT: [2014-11-28 Fri 14:22]
+:END:
+** TODO One-year review
+SCHEDULED: <2015-11-27 Fri +1y>
+- State "DONE"       from "TRACKING"   [2014-11-28 Fri 14:22]
+:PROPERTIES:
+:LAST_REPEAT: [2014-11-28 Fri 14:22]
+:END:
 
 
-#+END_SRC
-#+BEGIN_EXAMPLE
 
-#+END_EXAMPLE
-#+BEGIN_EXAMPLE
-
-#+END_EXAMPLE
-* my need for org-mode
-** TODO notes-takinMong
-SCHEDULED: <2014-11-24 Mon>
-*** write a plugin to capture screens
-** mobile and sync -> phone
-*** install the mobileorg to the phone
-*** setting the sync
-** GTD
-*** plan files
-+ plan.org
-+ todo.org
-*** plan tags and states
-*** key bindings
-** git the .emacs

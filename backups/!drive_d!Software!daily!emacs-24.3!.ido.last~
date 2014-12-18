@@ -2,6 +2,7 @@
 
 ;; ----- ido-last-directory-list -----
 (
+ ("d:/Software/daily/emacs-24.3/" . "org/")
  ("d:/Software/Encyclopadia/" . "Ultimate Reference Suite/")
  ("d:/Software/" . "Encyclopadia/")
  ("d:/" . "Software/")
@@ -9,25 +10,31 @@
 
 ;; ----- ido-work-directory-list -----
 (
+ "d:/Software/daily/emacs-24.3/org/"
  "d:/Software/daily/emacs-24.3/.emacs.d/"
  "d:/Software/Encyclopadia/Ultimate Reference Suite/"
 )
 
 ;; ----- ido-work-file-list -----
 (
+ "plans.org"
+ "todos.org"
+ "*todos.org"
  "COPYING"
  "error.log"
 )
 
 ;; ----- ido-dir-file-cache -----
 (
- ("d:/Software/daily/emacs-24.3/org/" (21619 15964 0 0) "todos.org" "plans.org" "notes.org" "../" "./")
+ ("d:/Software/daily/emacs-24.3/.emacs.d/" (21620 34585 0 0) "YANG.org" "YANG.el" "starter-kit.org" "starter-kit.el" "starter-kit-yasnippet.org" "starter-kit-yasnippet.el" "starter-kit-scala.org" "starter-kit-ruby.org" "starter-kit-registers.org" "starter-kit-registers.el" "starter-kit-python.org" "starter-kit-publish.org" "starter-kit-perl.org" "starter-kit-org.org" "starter-kit-misc.org" "starter-kit-misc.el" "starter-kit-misc-recommended.org" "starter-kit-lisp.org" "starter-kit-js.org" "starter-kit-haskell.org" "starter-kit-haskell.el" "starter-kit-gnus.org" "starter-kit-g-client.org" "starter-kit-eshell.org" "starter-kit-defuns.org" "starter-kit-defuns.el" "starter-kit-bindings.org" "starter-kit-bindings.el" "src/" "snippets/" "smex-items" "server/" "README" "places" "Makefile" "init.el" "elpa/" "custom.el" "COPYING" "bookmarks" "backups/" "auto-save-list/" ".git/" "#starter-kit-bindings.org#" "../" "./")
+
+ ("d:/Software/daily/emacs-24.3/org/" (21620 35164 0 0) "todos.org" "plans.org" "notes.org" "../" "./")
+
+ ("/dailytools/" (21600 57244 0 0) "Baidu/" "../" "./")
+
+ ("d:/Software/daily/emacs-24.3/" (21619 16494 0 0) "site-lisp/" "README.W32" "README" "org/" "lisp/" "leim/" "info/" "etc/" "diary" "COPYING" "BUGS" "bin/" ".recentf" ".ido.last" ".gnucash/" ".gitconfig" ".emacs~" ".emacs.d/" ".emacs-places" ".bash_history" "../" "./")
 
  ("d:/Software/daily/" (21616 1517 0 0) "Vim/" "emacs-24.3 - Copy/" "emacs-24.3/" "11game/" "../" "./")
-
- ("d:/Software/daily/emacs-24.3/" (21616 44201 0 0) "site-lisp/" "README.W32" "README" "lisp/" "leim/" "info/" "etc/" "COPYING" "BUGS" "bin/" ".recentf" ".ido.last" ".gnucash/" ".emacs~" ".emacs.d/" ".emacs-places" ".bash_history" "../" "./")
-
- ("d:/Software/daily/emacs-24.3/.emacs.d/" (21618 36392 0 0) "YANG.org" "YANG.el" "starter-kit.org" "starter-kit.el" "starter-kit-yasnippet.org" "starter-kit-yasnippet.el" "starter-kit-scala.org" "starter-kit-ruby.org" "starter-kit-registers.org" "starter-kit-registers.el" "starter-kit-python.org" "starter-kit-publish.org" "starter-kit-perl.org" "starter-kit-org.org" "starter-kit-misc.org" "starter-kit-misc.el" "starter-kit-misc-recommended.org" "starter-kit-lisp.org" "starter-kit-js.org" "starter-kit-haskell.org" "starter-kit-haskell.el" "starter-kit-gnus.org" "starter-kit-g-client.org" "starter-kit-eshell.org" "starter-kit-defuns.org" "starter-kit-defuns.el" "starter-kit-bindings.org" "starter-kit-bindings.el" "src/" "snippets/" "smex-items" "server/" "README" "places" "Makefile" "init.el" "elpa/" "custom.el" "COPYING" "backups/" "auto-save-list/" ".gitignore" ".git/" "#YANG.org#" "#starter-kit-bindings.org#" "../" "./")
 
  ("d:/Software/daily/emacs-24.3/.emacs.d/elpa/" (21617 40833 0 0) "yasnippet-20141117.327/" "undo-tree-20140509.522/" "smex-20141027.245/" "shm-20141011.508/" "s-20140910.334/" "powerline-20141117.634/" "popup-20141002.320/" "pkg-info-20140610.630/" "paredit-20140128.1248/" "ox-reveal-20141112.644/" "org-pomodoro-readme.txt" "org-pomodoro-20140908.646/" "org-bullets-readme.txt" "mustache-20131117.1407/" "moe-theme-20141106.125/" "magit-readme.txt~" "magit-readme.txt" "magit-20141115.1601/" "ido-ubiquitous-20141118.1234/" "idle-highlight-mode-20120920.948/" "htmlize-20130207.1202/" "ht-20140122.1555/" "haskell-mode-20141120.1258/" "goto-chg-20131228.1459/" "gntp-20141024.1950/" "git-rebase-mode-20140928.1547/" "git-commit-mode-20141014.1634/" "ghc-20141118.1609/" "flycheck-20141117.1029/" "find-file-in-project-20140603.1619/" "evil-org-readme.txt" "evil-org-20141002.253/" "evil-leader-readme.txt" "evil-leader-20140606.543/" "evil-20141119.205/" "epl-20140823.609/" "dash-20141106.455/" "color-theme-20080305.34/" "bbdb-20140830.2031/" "autopair-20140825.427/" "archives/" "alert-20141112.1044/" "ace-jump-mode-20140616.115/" "ace-jump-buffer-readme.txt" "ace-jump-buffer-20141107.1317/" ".gitignore" "../" "./")
 
