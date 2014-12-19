@@ -1,6 +1,8 @@
 
 (server-start)
 (setq default-directory "~/")
+
+
 (setq org-startup-indented t)
 (require 'package)
 (package-initialize)
@@ -199,3 +201,39 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
 (setq org-latex-pdf-process '("xelatex -interaction nonstopmode -output-directory %o %f"
                               "xelatex -interaction nonstopmode -output-directory %o %f"
                               "xelatex -interaction nonstopmode -output-directory %o %f"))
+
+
+
+  (defun sl/display-header ()
+(setq header-line-format
+       (list "-"
+
+        'global-mode-string
+)))
+
+
+
+  (add-hook 'buffer-list-update-hook
+            'sl/display-header)
+
+(require 'gnus)
+  (setq nnml-directory "~/gmail")
+  (setq message-directory "~/gmail")
+ (setq gnus-ignored-newsgroups "^to\\.\\|^[0-9. ]+\\( \\|$\\)\\|^[\”]\”[#’()]")
+  (setq gnus-select-method
+        '(nnimap "gmail"
+                 (nnimap-address "imap.gmail.com")
+                 (nnimap-server-port 993)
+                 (nnimap-stream ssl)))
+
+(require 'bbdb)
+(require 'bbdb-autoloads)
+(setq
+ bbdb-file "~/.bbdb"
+ bbdb-offer-save 'auto
+ bbdb-notice-auto-save-file t
+ bbdb-expand-mail-aliases t
+ bbdb-canonicalize-redundant-nets-p t
+ bbdb-always-add-addresses t
+ bbdb-complete-name-allow-cycling t
+ )

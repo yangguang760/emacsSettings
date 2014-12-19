@@ -6,6 +6,7 @@ This is part of the [[file:starter-kit.gnus][Emacs Starter Kit]].
 * Starter Kit Gnus
 Configuration for the notoriously difficult to configure [[http://www.gnus.org/][Gnus]] email
 client
+
 ** IMAP
   :PROPERTIES:
   :CUSTOM_ID: imap
@@ -53,7 +54,6 @@ to use this file:
 Where your mail will be saved locally default value will be =~/gmail=.
 #+begin_src emacs-lisp
   (require 'gnus)
-  (setq tls-program '("D:/development/cygwin/bin/openssl.exe s_client -connect %h:%p -no_ssl2 -ign_eof"))
   (setq nnml-directory "~/gmail")
   (setq message-directory "~/gmail")
 #+end_src
@@ -107,7 +107,7 @@ email.
 If you don't want to be prompted for a password on every mail sent,
 you can add the following line to your =~/.authinfo=.
 #+begin_src fundamental :tangle ~/.authinfo
-  machine smtp.gmail.com login yangguang760@gmail.com your-password 726515woaiwojia port 587
+  machine smtp.gmail.com login yangguang760@gmail.com 726515woaiwojia secret port 587
 #+end_src
 
 ** Pop
@@ -133,7 +133,7 @@ First off, load up =gnus=
 Tell gnus that your mainly going to be using it for email not as a
 news reader -- after all it's not longer the late 80s.
 #+begin_src emacs-lisp
-  (setq gnus-select-method '(nnml "news.cn99.com"))
+  (setq gnus-select-method '(nnml ""))
 #+end_src
 
 *** Required packages
@@ -162,8 +162,8 @@ For a simple pop3 setup, simply replace =your-gmail-email-address= and
 following tables.
 
 #+results: gmail-configuration
-| email    | yangguang760@gmail.com |   |
-| password | 726515woaiwojia        |   |
+| email    | yangguang760@gmail.com |
+| password | 726515woaiwojia      |
 
 #+begin_src emacs-lisp :var config=gmail-configuration
   (let ((email (second (first config)))
