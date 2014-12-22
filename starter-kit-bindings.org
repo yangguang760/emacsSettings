@@ -115,6 +115,8 @@ The [[http://orgmode.org/manual/Agenda-Views.html#Agenda-Views][Org-mode agenda]
    (lambda ()
      (define-key org-agenda-mode-map "j" 'org-agenda-next-line)
      (define-key org-agenda-mode-map "J" 'org-agenda-later)
+       (define-key org-agenda-mode-map "P"
+				 (lambda() (interactive) (org-agenda-write "~/agenda.html")))
      (define-key org-agenda-mode-map "K" 'org-agenda-earlier)
     (define-key org-agenda-mode-map "I" 'org-pomodoro)
      (define-key org-agenda-mode-map "=" 'org-agenda-columns)
@@ -196,6 +198,9 @@ Rgrep is infinitely useful in multi-file projects.
 #+end_src
 
 ** bbdb
+:PROPERTIES:
+:ID:       e5819aa6-a70d-4ce6-bd6b-1776d098fc60
+:END:
 #+begin_src emacs-lisp
 (require 'bbdb)
  (evil-define-key 'motion bbdb-mode-map

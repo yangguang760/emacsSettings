@@ -146,12 +146,28 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
 (require 'relative-line-numbers)
 (evil-mode 1)
 (global-evil-leader-mode)
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((R . t)
+   (emacs-lisp . t)
+   (matlab . t)
+   (C . t)
+   (perl . t)
+   (sh . t)
+   (ditaa . t)
+   (python . t)
+   (haskell . t)
+   (dot . t)
+   (latex . t)
+   (js . t)
+   ))
+
 (autoload
   'ace-jump-mode
   "ace-jump-mode"
   "Emacs quick move minor mode"
   t)
-(global-relative-line-numbers-mode)
+;;(global-relative-line-numbers-mode)
 #+END_SRC
 
 ** Settings for helm
@@ -184,9 +200,13 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
 #+BEGIN_SRC emacs-lisp 
 (setq org-clock-persist 'history)
 (setq org-clock-persistence t)
-(setq org-agenda-buffer-tmp-name "orgagendabuffertempname")
+(setq org-agenda-buffer-tmp-name "*Org Agenda*")
 (setq org-log-done 'time)
 (setq org-log-repeat 'note)
+(setq org-icalendar-use-scheduled '(todo-start event-if-todo))
+(setq org-icalendar-use-scheduled '(todo-end event-if-todo))
+(setq org-agenda-default-appointment-duration 60)
+
 (defun org-summary-todo (n-done n-not-done)
        "Switch entry to DONE when all subentries are done, to TODO otherwise."
     (let (org-log-done org-log-states)   ; turn off logging
@@ -194,6 +214,7 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
  (setq org-default-notes-file (concat org-directory "/notes.org"))
 (evil-ex-define-cmd "ls" 'helm-mini)
 (setq org-mobile-directory "~/mobileorg")
+(add-hook 'org-mode-hook (lambda () (org-autolist-mode)))
 (setq org-reveal-root "file:///d:/reveal.js")
 (setq org-agenda-files (list 
                                    "~/org"))
@@ -204,6 +225,75 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
              "* %? :UNPLANNED:\n  %x %i\n  %t ")))
 
 (require 'ox-latex)
+(add-to-list 'org-latex-classes
+             '("cn-article"
+               "\\documentclass[10pt,a4paper]{article}
+\\usepackage{graphicx}
+\\usepackage{xcolor}
+\\usepackage{xeCJK}
+\\usepackage{lmodern}
+\\usepackage{verbatim}
+\\usepackage{fixltx2e}
+\\usepackage{longtable}
+\\usepackage{float}
+\\usepackage{tikz}
+\\usepackage{wrapfig}
+\\usepackage{soul}
+\\usepackage{textcomp}
+\\usepackage{listings}
+\\usepackage{geometry}
+\\usepackage{algorithm}
+\\usepackage{algorithmic}
+\\usepackage{marvosym}
+\\usepackage{wasysym}
+\\usepackage{latexsym}
+\\usepackage{natbib}
+\\usepackage{fancyhdr}
+\\usepackage[xetex,colorlinks=true,CJKbookmarks=true,
+linkcolor=blue,
+urlcolor=blue,
+menucolor=blue]{hyperref}
+\\usepackage{fontspec,xunicode,xltxtra}
+\\setmainfont[BoldFont=Microsoft YaHei]{Microsoft YaHei}  
+\\setsansfont[BoldFont=Microsoft YaHei]{Microsoft YaHei}
+\\setmonofont{Microsoft YaHei}  
+\\newcommand\\fontnamemono{Microsoft YaHei}%等宽字体
+\\newfontinstance\\MONO{\\fontnamemono}
+\\newcommand{\\mono}[1]{{\\MONO #1}}
+\\setCJKmainfont[Scale=0.9]{WenQuanYi Micro Hei}%中文字体
+\\setCJKsansfont[Scale=0.9]{WenQuanYi Micro Hei}
+\\setCJKmonofont[Scale=0.9]{WenQuanYi Micro Hei Mono}
+\\hypersetup{unicode=true}
+\\geometry{a4paper, textwidth=6.5in, textheight=10in,
+marginparsep=7pt, marginparwidth=.6in}
+\\definecolor{foreground}{RGB}{220,220,204}%浅灰
+\\definecolor{background}{RGB}{62,62,62}%浅黑
+\\definecolor{preprocess}{RGB}{250,187,249}%浅紫
+\\definecolor{var}{RGB}{239,224,174}%浅肉色
+\\definecolor{string}{RGB}{154,150,230}%浅紫色
+\\definecolor{type}{RGB}{225,225,116}%浅黄
+\\definecolor{function}{RGB}{140,206,211}%浅天蓝
+\\definecolor{keyword}{RGB}{239,224,174}%浅肉色
+\\definecolor{comment}{RGB}{180,98,4}%深褐色
+\\definecolor{doc}{RGB}{175,215,175}%浅铅绿
+\\definecolor{comdil}{RGB}{111,128,111}%深灰
+\\definecolor{constant}{RGB}{220,162,170}%粉红
+\\definecolor{buildin}{RGB}{127,159,127}%深铅绿
+\\punctstyle{kaiming}
+\\title{}
+\\fancyfoot[C]{\\bfseries\\thepage}
+\\chead{\\MakeUppercase\\sectionmark}
+\\pagestyle{fancy}
+\\tolerance=1000
+[NO-DEFAULT-PACKAGES]
+[NO-PACKAGES]"
+("\\section{%s}" . "\\section*{%s}")
+("\\subsection{%s}" . "\\subsection*{%s}")
+("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+("\\paragraph{%s}" . "\\paragraph*{%s}")
+("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
+
 (add-to-list 'org-latex-classes
 	   '("article-zh"
 	     "
@@ -261,5 +351,15 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
  bbdb-always-add-addresses t
  bbdb-complete-name-allow-cycling t
  )
+
+(require 'cal-china-x)
+(setq mark-holidays-in-calendar t)
+(setq cal-china-x-important-holidays cal-china-x-chinese-holidays)
+(setq calendar-holidays cal-china-x-important-holidays)
+
+ (desktop-save-mode nil)
+ (desktop-load-default)
+(desktop-read)
+
 
 #+END_SRC

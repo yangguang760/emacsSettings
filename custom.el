@@ -85,6 +85,7 @@
          (powerline-fill face2
                          (powerline-width rhs))
          (powerline-render rhs)))))))
+ '(relative-line-numbers-delay 1)
  '(show-paren-mode t)
  '(text-mode-hook (quote (text-mode-hook-identify)))
  '(tool-bar-mode nil))
