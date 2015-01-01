@@ -10,7 +10,7 @@
 (package-initialize)
 (push '("marmalade" . "http://marmalade-repo.org/packages/")
         package-archives )
-(push '("melpa" . "http://melpa.milkbox.net/packages/")
+(push '("melpa" . "http://melpa.org/packages/")
         package-archives)
 (starter-kit-load "haskell")
 (starter-kit-load "yasnippet")
@@ -24,121 +24,16 @@
 #+BEGIN_SRC emacs-lisp
 
 
-(defun qiang-font-existsp (font)
-  (if (null (x-list-fonts font))
-      nil t))
+(require 'chinese-fonts-setup)
 
-(defun qiang-make-font-string (font-name font-size)
-  (if (and (stringp font-size)
-           (equal ":" (string (elt font-size 0))))
-      (format "%s%s" font-name font-size)
-    (format "%s-%s" font-name font-size)))
-
-(defvar bhj-english-font-size nil)
-(defun qiang-set-font (english-fonts
-                       english-font-size
-                       chinese-fonts
-                       &optional chinese-fonts-scale
-                       )
-  (setq chinese-fonts-scale (or chinese-fonts-scale 1.2))
-  (save-excursion
-    (with-current-buffer (find-file-noselect "~/org/emacs-font-size")
-      (delete-region (point-min) (point-max))
-      (insert (format "%s" english-font-size))
-      (save-buffer)
-      (kill-buffer)))
-  (setq face-font-rescale-alist `(("Microsoft Yahei" . ,chinese-fonts-scale)
-                                  ("Microsoft_Yahei" . ,chinese-fonts-scale)
-                                  ("微软雅黑" . ,chinese-fonts-scale)
-                                  ("WenQuanYi Zen Hei" . ,chinese-fonts-scale)))
-  "english-font-size could be set to \":pixelsize=18\" or a integer.
-If set/leave chinese-font-size to nil, it will follow english-font-size"
-  (require 'cl)                         ; for find if
-  (setq bhj-english-font-size english-font-size)
-  (let ((en-font (qiang-make-font-string
-                  (find-if #'qiang-font-existsp english-fonts)
-                  english-font-size))
-        (zh-font (font-spec :family (find-if #'qiang-font-existsp chinese-fonts))))
-
-    ;; Set the default English font
-    ;;
-    ;; The following 2 method cannot make the font settig work in new frames.
-    ;; (set-default-font "Consolas:pixelsize=18")
-    ;; (add-to-list 'default-frame-alist '(font . "Consolas:pixelsize=18"))
-    ;; We have to use set-face-attribute
-    (set-face-attribute
-     'default nil :font en-font)
-    (set-face-font 'italic (font-spec :family "Courier New" :slant 'italic :weight 'normal :size (+ 0.0 english-font-size)))
-    (set-face-font 'bold-italic (font-spec :family "Courier New" :slant 'italic :weight 'bold :size (+ 0.0 english-font-size)))
-
-    (set-fontset-font t 'symbol (font-spec :family "Courier New"))
-    (set-fontset-font t nil (font-spec :family "DejaVu Sans"))
-
-    ;; Set Chinese font
-    ;; Do not use 'unicode charset, it will cause the english font setting invalid
-    (dolist (charset '(kana han cjk-misc bopomofo))
-      (set-fontset-font t charset zh-font))))
-
-
-(defvar bhj-english-fonts '("Monaco" "Consolas" "DejaVu Sans Mono" "Monospace" "Courier New"))
-(defvar bhj-chinese-fonts '("Microsoft Yahei" "Microsoft_Yahei" "微软雅黑" "文泉驿等宽微米黑" "黑体" "新宋体" "宋体"))
-
-(qiang-set-font
- bhj-english-fonts
- (if (file-exists-p "~/.config/emacs-font-size")
-     (save-excursion
-       (find-file "~/.config/emacs-font-size")
-       (goto-char (point-min))
-       (let ((monaco-font-size (read (current-buffer))))
-         (kill-buffer (current-buffer))
-         monaco-font-size))
-   12.5)
- bhj-chinese-fonts)
-
-(defvar chinese-font-size-scale-alist nil)
-
-;; On different platforms, I need to set different scaling rate for
-;; differnt font size.
-(cond
- ((and (boundp '*is-a-mac*) *is-a-mac*)
-  (setq chinese-font-size-scale-alist '((10.5 . 1.3) (11.5 . 1.3) (16 . 1.3) (18 . 1.25))))
- ((and (boundp '*is-a-win*) *is-a-win*)
-  (setq chinese-font-size-scale-alist '((11.5 . 1.25) (16 . 1.25))))
- (t ;; is a linux:-)
-  (setq chinese-font-size-scale-alist '((16 . 1.25)))))
-
-(defvar bhj-english-font-size-steps '(9 10.5 11.5 12.5 14 16 18 20 22))
-(defun bhj-step-frame-font-size (step)
-  (let ((steps bhj-english-font-size-steps)
-        next-size)
-    (when (< step 0)
-        (setq steps (reverse bhj-english-font-size-steps)))
-    (setq next-size
-          (cadr (member bhj-english-font-size steps)))
-    (when next-size
-        (qiang-set-font bhj-english-fonts next-size bhj-chinese-fonts (cdr (assoc next-size chinese-font-size-scale-alist)))
-        (message "Your font size is set to %.1f" next-size))))
-
-(global-set-key [(control x) (meta -)] (lambda () (interactive) (bhj-step-frame-font-size -1)))
-(global-set-key [(control x) (meta +)] (lambda () (interactive) (bhj-step-frame-font-size 1)))
-
-(set-face-attribute 'default nil :font (font-spec))
-
-; {%org-mode%}
-; here are 20 hanzi and 40 english chars, see if they are the same width
-; 你你你你你你你你你你你你你你你你你你你你
-; aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-; /aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/
-; {%/org-mode%}
-
-; Local Variables:
-; eval: (mmm-mode 1)
-; End:
 #+END_SRC
 
 ** Settings for Evil and ace-jump
 #+BEGIN_SRC emacs-lisp
 (require 'evil)
+(setq sentence-end "\\([。！？]\\|……\\|[.?!][]\"')}]*\\($\\|[ \t]\\)\\)[ \t\n]*")  
+(setq sentence-end-double-space nil)  
+(require 'org)
 (require 'evil-leader)
 (require 'evil-org)
 (add-to-list 'load-path "~/.emacs.d/elpa/helm")
@@ -198,6 +93,9 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
 
 ** Settings for org-mode
 #+BEGIN_SRC emacs-lisp 
+;;(require 'org-plus-contrib)
+(require 'ox-reveal)
+(require 'ox-deck)
 (setq org-clock-persist 'history)
 (setq org-clock-persistence t)
 (setq org-agenda-buffer-tmp-name "*Org Agenda*")
@@ -216,14 +114,57 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
 (setq org-mobile-directory "~/mobileorg")
 (add-hook 'org-mode-hook (lambda () (org-autolist-mode)))
 (setq org-reveal-root "file:///d:/reveal.js")
-(setq org-agenda-files (list 
-                                   "~/org"))
+(setq org-agenda-files (list "~/org"))
+
 (setq org-capture-templates
       '(("t" "Todo" entry (file+headline "~/org/todos.org" "misc-todos")
              "* TODO %?\n  %x %i\n  %t")
         ("i" "Inbox" entry (file+headline "~/org/todos.org" "Inbox")
              "* %? :UNPLANNED:\n  %x %i\n  %t ")))
 
+
+(require 'ox-publish)
+(setq org-publish-project-alist
+      '(
+        ("blog-notes"
+         :base-directory "~/org/blog/"
+         :base-extension "org"
+         :publishing-directory "~/org/yangguang760.github.io/"
+         :recursive t
+         :publishing-function org-html-publish-to-html
+         :headline-levels 4
+         :section-numbers nil
+         :auto-preamble t
+         :auto-sitemap t                ; Generate sitemap.org automagically...
+         :sitemap-filename "sitemap.org"  ; ... call it sitemap.org (it's the default)...
+         :sitemap-title "Sitemap"         ; ... with title 'Sitemap'.
+         :author "YANG Guang"
+         :email "yangguang760 at gmail dot com"
+         :style    "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/worg.css\"/>"
+         )
+        ("blog-static"
+         :base-directory "~/org/blog/"
+         :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
+         :publishing-directory "~/org/yangguang760.github.io/"
+         :recursive t
+         :publishing-function org-publish-attachment
+         )
+        ("blog" :components ("blog-notes" "blog-static"))
+        ;;
+        ))
+(setq org-html-postamble "<div id=\"disqus_thread\"></div>
+    <script type=\"text/javascript\">
+     
+        var disqus_shortname = 'yangguang760githubio'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href=\"http://disqus.com/?ref_noscript\">comments powered by Disqus.</a></noscript>")
 (require 'ox-latex)
 (add-to-list 'org-latex-classes
              '("cn-article"
@@ -340,6 +281,27 @@ marginparsep=7pt, marginparwidth=.6in}
                  (nnimap-server-port 993)
                  (nnimap-stream ssl)))
 
+  (setq message-send-mail-function 'smtpmail-send-it
+        smtpmail-starttls-credentials '(("smtp.gmail.com" 587 nil nil))
+        smtpmail-auth-credentials '(("smtp.gmail.com" 587 "yangguang760@gmail.com" nil))
+        smtpmail-default-smtp-server "smtp.gmail.com"
+        smtpmail-smtp-server "smtp.gmail.com"
+        smtpmail-smtp-service 587)
+
+(set-language-environment 'Chinese-GB)
+(setq gnus-default-charset 'chinese-iso-8bit
+      gnus-group-name-charset-group-alist '((".*" . cn-gb-2312))
+      gnus-summary-show-article-charset-alist
+      '((1 . cn-gb-2312)
+	(2 . gb18030)
+	(3 . chinese-iso-8bit)
+	(4 . gbk)
+	(5 . big5)
+	(6 . utf-8))
+      gnus-newsgroup-ignored-charsets
+      '(unknown-8bit x-unknown iso-8859-1))
+
+
 (require 'bbdb)
 (require 'bbdb-autoloads)
 (setq
@@ -351,15 +313,37 @@ marginparsep=7pt, marginparwidth=.6in}
  bbdb-always-add-addresses t
  bbdb-complete-name-allow-cycling t
  )
+(bbdb-initialize) 
+(add-hook 'gnus-startup-hook 'bbdb-insinuate-gnus) 
+(add-hook 'gnus-startup-hook 'bbdb-insinuate-message) 
+(add-hook 'message-setup-hook 'bbdb-define-all-aliases) 
+(setq bbdb-file-coding-system 'utf-8)
+
+(add-hook 'bbdb-load-hook
+   (lambda () (setq bbdb-file-coding-system 'utf-8)))
+
+(setq file-coding-system-alist
+   (cons '("\\.bbdb" utf-8 . utf-8)
+       file-coding-system-alist))
+
+
+
+     (setq ps-printer-name t)
+     (setq ps-lpr-command "D:/Software/daily/CTEX/Ghostscript/gs9.05/bin/gswin32c.exe")
+     (setq ps-lpr-switches '("-q" "-dNOPAUSE" "-dBATCH"
+                             "-sDEVICE=mswinpr2"
+                             "-sPAPERSIZE=a4"))
+
+
 
 (require 'cal-china-x)
 (setq mark-holidays-in-calendar t)
 (setq cal-china-x-important-holidays cal-china-x-chinese-holidays)
 (setq calendar-holidays cal-china-x-important-holidays)
 
- (desktop-save-mode nil)
- (desktop-load-default)
-(desktop-read)
+;; (desktop-save-mode nil)
+ ;;(desktop-load-default)
+;;(desktop-read)
 
 
 #+END_SRC
