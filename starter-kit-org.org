@@ -18,19 +18,6 @@ which is also *implemented using* Org-mode and [[http://git-scm.com/][git]].
    :PROPERTIES:
    :CUSTOM_ID: keybindings
    :END:
-#+begin_src emacs-lisp
-  (add-hook 'org-mode-hook
-            (lambda ()
-              (local-set-key "\M-\C-n" 'outline-next-visible-heading)
-              (local-set-key "\M-\C-p" 'outline-previous-visible-heading)
-              (local-set-key "\M-\C-u" 'outline-up-heading)
-              ;; table
-              (local-set-key "\M-\C-w" 'org-table-copy-region)
-              (local-set-key "\M-\C-y" 'org-table-paste-rectangle)
-              (local-set-key "\M-\C-l" 'org-table-sort-lines)
-              ;; display images
-              (local-set-key "\M-I" 'org-toggle-iimage-in-org)))
-#+end_src
 
 ** Speed keys
    :PROPERTIES:
@@ -47,6 +34,7 @@ sequence =C-c C-v h= (bound to `=org-babel-describe-bindings=') will
 display a list of the code blocks commands and their related keys.
 
 #+begin_src emacs-lisp
+(require 'org)
   (setq org-use-speed-commands t)
 #+end_src
 
@@ -60,10 +48,24 @@ to activate more languages using the customize interface for the
 one below.  The customize interface of `=org-babel-load-languages='
 contains an up to date list of the currently supported languages.
 #+begin_src emacs-lisp :tangle no
-  (org-babel-do-load-languages
-   'org-babel-load-languages
-   '((emacs-lisp . t)
-     (sh . t)))
+
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((R . t)
+   (emacs-lisp . t)
+   (matlab . t)
+   (C . t)
+   (perl . t)
+   (sh . t)
+   (ditaa . t)
+   (python . t)
+   (haskell . t)
+   (gnuplot . t)
+   (plantuml . t)
+   (dot . t)
+   (latex . t)
+   (js . t)
+   ))
 #+end_src
 
 You are encouraged to add the following to your personal configuration
@@ -86,15 +88,189 @@ much more like reading and editing of code using its major mode.
   (setq org-src-tab-acts-natively t)
 #+end_src
 
-** The Library of Babel
-   :PROPERTIES:
-   :CUSTOM_ID: library-of-babel
-   :END:
-The library of babel contains makes many useful functions available
-for use by code blocks in *any* emacs file.  See the actual
-=library-of-babel.org= (located in the Org-mode =contrib/babel=
-directory) file for information on the functions, and see
-[[http://orgmode.org/worg/org-contrib/babel/intro.php#library-of-babel][worg:library-of-babel]] for more usage information.
+** Settings for org-mode
+#+BEGIN_SRC emacs-lisp 
+;;(require 'org-plus-contrib)
+(require 'ox-reveal)
+;;(require 'ox-deck)
+(setq org-clock-persist 'history)
+(setq org-clock-persistence t)
+(setq org-agenda-buffer-tmp-name "*Org Agenda*")
+(setq org-log-done 'time)
+(setq org-log-repeat 'note)
+(setq org-icalendar-use-scheduled '(todo-start event-if-todo))
+(setq org-icalendar-use-scheduled '(todo-end event-if-todo))
+(setq org-agenda-default-appointment-duration 60)
 
-Code blocks can be loaded into the library of babel from any Org-mode
-file using the `org-babel-lob-ingest' function.
+(defun org-summary-todo (n-done n-not-done)
+       "Switch entry to DONE when all subentries are done, to TODO otherwise."
+    (let (org-log-done org-log-states)   ; turn off logging
+    (org-todo (if (= n-not-done 0) "DONE" "TODO"))))
+ (setq org-default-notes-file (concat org-directory "/notes.org"))
+(evil-ex-define-cmd "ls" 'helm-mini)
+(setq org-mobile-directory "~/mobileorg")
+(add-hook 'org-mode-hook (lambda () (org-autolist-mode)))
+(setq org-reveal-root "file:///d:/reveal.js")
+(setq org-agenda-files (list "~/org"))
+(setq org-refile-targets
+      '((org-agenda-files  . (:level . 1) ) (org-agenda-files  . (:level . 2))))
+
+
+(setq org-capture-templates
+      '(("t" "Todo" entry (file+headline "~/org/todos.org" "misc-todos")
+             "* TODO %?\n  %x %i\n  %t")
+        ("i" "Inbox" entry (file+headline "~/org/todos.org" "Inbox")
+             "* %? :UNPLANNED:\n  %x %i\n  %t ")))
+
+(setq org-todo-keyword-faces
+  '(
+    ("TRACKING" .      (:background "MediumBlue"  :foreground "gray" :weight bold)) 
+
+))
+
+(require 'ox-publish)
+(setq org-publish-project-alist
+      '(
+        ("blog-notes"
+         :base-directory "~/org/blog/"
+         :base-extension "org"
+         :publishing-directory "~/org/yangguang760.github.io/"
+         :recursive t
+         :publishing-function org-html-publish-to-html
+         :headline-levels 4
+         :section-numbers nil
+         :auto-preamble t
+         :auto-sitemap t                ; Generate sitemap.org automagically...
+         :sitemap-filename "sitemap.org"  ; ... call it sitemap.org (it's the default)...
+         :sitemap-title "Sitemap"         ; ... with title 'Sitemap'.
+         :author "YANG Guang"
+         :email "yangguang760 at gmail dot com"
+         :style    "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/worg.css\"/>"
+         )
+        ("blog-static"
+         :base-directory "~/org/blog/"
+         :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
+         :publishing-directory "~/org/yangguang760.github.io/"
+         :recursive t
+         :publishing-function org-publish-attachment
+         )
+        ("blog" :components ("blog-notes" "blog-static"))
+        ;;
+        ))
+(setq org-html-postamble "<div id=\"disqus_thread\"></div>
+    <script type=\"text/javascript\">
+     
+        var disqus_shortname = 'yangguang760githubio'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href=\"http://disqus.com/?ref_noscript\">comments powered by Disqus.</a></noscript>")
+(require 'ox-latex)
+(add-to-list 'org-latex-classes
+             '("cn-article"
+               "\\documentclass[10pt,a4paper]{article}
+\\usepackage{graphicx}
+\\usepackage{xcolor}
+\\usepackage{xeCJK}
+\\usepackage{lmodern}
+\\usepackage{verbatim}
+\\usepackage{fixltx2e}
+\\usepackage{longtable}
+\\usepackage{float}
+\\usepackage{tikz}
+\\usepackage{wrapfig}
+\\usepackage{soul}
+\\usepackage{textcomp}
+\\usepackage{listings}
+\\usepackage{geometry}
+\\usepackage{algorithm}
+\\usepackage{algorithmic}
+\\usepackage{marvosym}
+\\usepackage{wasysym}
+\\usepackage{latexsym}
+\\usepackage{natbib}
+\\usepackage{fancyhdr}
+\\usepackage[xetex,colorlinks=true,CJKbookmarks=true,
+linkcolor=blue,
+urlcolor=blue,
+menucolor=blue]{hyperref}
+\\usepackage{fontspec,xunicode,xltxtra}
+\\setmainfont[BoldFont=Microsoft YaHei]{Microsoft YaHei}  
+\\setsansfont[BoldFont=Microsoft YaHei]{Microsoft YaHei}
+\\setmonofont{Microsoft YaHei}  
+\\newcommand\\fontnamemono{Microsoft YaHei}%µÈ¿í×ÖÌå
+\\newfontinstance\\MONO{\\fontnamemono}
+\\newcommand{\\mono}[1]{{\\MONO #1}}
+\\setCJKmainfont[Scale=0.9]{WenQuanYi Micro Hei}%ÖÐÎÄ×ÖÌå
+\\setCJKsansfont[Scale=0.9]{WenQuanYi Micro Hei}
+\\setCJKmonofont[Scale=0.9]{WenQuanYi Micro Hei Mono}
+\\hypersetup{unicode=true}
+\\geometry{a4paper, textwidth=6.5in, textheight=10in,
+marginparsep=7pt, marginparwidth=.6in}
+\\definecolor{foreground}{RGB}{220,220,204}%Ç³»Ò
+\\definecolor{background}{RGB}{62,62,62}%Ç³ºÚ
+\\definecolor{preprocess}{RGB}{250,187,249}%Ç³×Ï
+\\definecolor{var}{RGB}{239,224,174}%Ç³ÈâÉ«
+\\definecolor{string}{RGB}{154,150,230}%Ç³×ÏÉ«
+\\definecolor{type}{RGB}{225,225,116}%Ç³»Æ
+\\definecolor{function}{RGB}{140,206,211}%Ç³ÌìÀ¶
+\\definecolor{keyword}{RGB}{239,224,174}%Ç³ÈâÉ«
+\\definecolor{comment}{RGB}{180,98,4}%ÉîºÖÉ«
+\\definecolor{doc}{RGB}{175,215,175}%Ç³Ç¦ÂÌ
+\\definecolor{comdil}{RGB}{111,128,111}%Éî»Ò
+\\definecolor{constant}{RGB}{220,162,170}%·Ûºì
+\\definecolor{buildin}{RGB}{127,159,127}%ÉîÇ¦ÂÌ
+\\punctstyle{kaiming}
+\\title{}
+\\fancyfoot[C]{\\bfseries\\thepage}
+\\chead{\\MakeUppercase\\sectionmark}
+\\pagestyle{fancy}
+\\tolerance=1000
+[NO-DEFAULT-PACKAGES]
+[NO-PACKAGES]"
+("\\section{%s}" . "\\section*{%s}")
+("\\subsection{%s}" . "\\subsection*{%s}")
+("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+("\\paragraph{%s}" . "\\paragraph*{%s}")
+("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
+
+(add-to-list 'org-latex-classes
+	   '("article-zh"
+	     "
+\\documentclass{article}
+\\usepackage[slantfont, boldfont]{xeCJK}
+\\setCJKmainfont{WenQuanYi Micro Hei}
+\\setCJKsansfont{WenQuanYi Micro Hei}
+\\setCJKmonofont{WenQuanYi Micro Hei Mono}
+"
+	     ("\\section{%s}" . "\\section*{%s}")
+	     ("\\subsection{%s}" . "\\subsection*{%s}")
+	     ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+	     ("\\paragraph{%s}" . "\\paragraph*{%s}")
+	     ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
+(setq org-latex-pdf-process '("xelatex -interaction nonstopmode -output-directory %o %f"
+			      "xelatex -interaction nonstopmode -output-directory %o %f"
+			      "xelatex -interaction nonstopmode -output-directory %o %f"))
+
+
+
+  (defun sl/display-header ()
+(setq header-line-format
+       (list "-"
+
+        'global-mode-string
+)))
+
+
+
+  (add-hook 'buffer-list-update-hook
+            'sl/display-header)
+
+#+END_SRC

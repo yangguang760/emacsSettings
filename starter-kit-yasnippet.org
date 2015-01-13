@@ -71,6 +71,16 @@ following function allows these two to play nicely together.
     (setq yas/trigger-key [tab])
     (add-to-list 'org-tab-first-hook 'yas/org-very-safe-expand)
     (define-key yas/keymap [tab] 'yas/next-field))
+(require 'auto-complete)
+(require 'auto-complete-config)
+(ac-config-default)
+(defun ac-complete-with-space ()
+  (interactive)
+  (ac-complete)
+  (insert " "))
 
+(define-key ac-completing-map (kbd "<return>") 'ac-complete-with-space)
   (add-hook 'org-mode-hook #'yas/org-setup)
+(setq ac-auto-start 5)
+(global-auto-complete-mode t)
 #+end_src

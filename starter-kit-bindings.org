@@ -39,10 +39,13 @@ Key Bindings.
 (require 'evil-leader)
 (require 'evil-org)
 (define-key evil-normal-state-map (kbd "SPC") 'ace-jump-mode)
-(define-key evil-normal-state-map (kbd "C-w SPC") 'ace-jump-buffer)
+(define-key evil-normal-state-map  (kbd "C-w SPC") 'helm-mini)
 (define-key evil-motion-state-map ":" 'helm-M-x)
 (define-key evil-motion-state-map ";" 'evil-ex)
-(define-key evil-normal-state-map (kbd "SPC") 'ace-jump-mode)
+(define-key evil-normal-state-map "m" 'set-mark-command)
+(define-key evil-normal-state-map "M" 'helm-mark-ring)
+(evil-ex-define-cmd "f[iles]" 'helm-find-files)
+
 #+end_src
 
 ** helm
@@ -52,26 +55,21 @@ Key Bindings.
 (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
 (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal
 (define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
-
+(evil-leader/set-key
+   "p" 'helm-show-kill-ring
+   "f" 'helm-locate
+   "m" 'helm-all-mark-rings
+   "s"  'helm-occur)
 #+end_src
 
 ** Use regex searches by default.
 #+begin_src emacs-lisp 
-(global-set-key (kbd "C-s") 'isearch-forward-regexp)
-(global-set-key (kbd "\C-r") 'isearch-backward-regexp)
-(global-set-key (kbd "C-M-s") 'isearch-forward)
-(global-set-key (kbd "C-M-r") 'isearch-backward)
+
 #+end_src
 
 ** File finding
 #+begin_src emacs-lisp 
-  ;;(global-set-key (kbd "C-w f") 'ido-find-file-other-window)
-  ;;(global-set-key (kbd "C-x C-p") 'find-file-at-point)
-  (global-set-key (kbd "C-c y") 'bury-buffer)
-  (global-set-key (kbd "C-c r") 'revert-buffer)
-  (global-set-key (kbd "M-`") 'file-cache-minibuffer-complete)
-  (global-set-key (kbd "C-x C-b") 'ibuffer)
-  (global-set-key (kbd "C-x f") 'recentf-ido-find-file)  
+
 #+end_src
 
 ** Window switching. (C-x o goes to the next window)
@@ -83,7 +81,7 @@ Key Bindings.
 
 ** Indentation help
 #+begin_src emacs-lisp 
-(global-set-key (kbd "C-x ^") 'join-line)
+
 #+end_src
 
 ** If you want to be able to M-x without meta
@@ -121,8 +119,6 @@ The [[http://orgmode.org/manual/Agenda-Views.html#Agenda-Views][Org-mode agenda]
     (define-key org-agenda-mode-map "I" 'org-pomodoro)
      (define-key org-agenda-mode-map "=" 'org-agenda-columns)
      (define-key org-agenda-mode-map "k" 'org-agenda-previous-line)))
-(evil-ex-define-cmd "f[iles]" 'helm-find-files)
-(evil-ex-define-cmd "ls" 'helm-mini)
 (evil-leader/set-key-for-mode 'org-mode
   "t"  'org-show-todo-tree
   "a"  'org-agenda
@@ -132,6 +128,7 @@ The [[http://orgmode.org/manual/Agenda-Views.html#Agenda-Views][Org-mode agenda]
   "l"  'evil-org-open-links
   "b" 'org-schedule
   "e" 'org-deadline
+  "r" 'org-refile
   )
 (mapc (lambda (state)
         (evil-define-key state evil-org-mode-map
@@ -162,11 +159,9 @@ The [[http://orgmode.org/manual/Agenda-Views.html#Agenda-Views][Org-mode agenda]
 	  'org-backward-heading-same-level)
   "gl" 'outline-next-visible-heading
   "t" 'org-todo
-  "b" 'org-schedule
-  "e" 'org-deadline
   "E" 'org-set-effort
   "s" 'org-set-tags-command
-  "C-w SPC" 'ace-jump-buffer
+  "C-w SPC" 'helm-mini
   "T" 'org-toggle-checkbox
   "o" '(lambda () (interactive) (evil-org-eol-call 'clever-insert-item))
   "O" '(lambda () (interactive) (evil-org-eol-call 'org-insert-heading))
@@ -177,6 +172,8 @@ The [[http://orgmode.org/manual/Agenda-Views.html#Agenda-Views][Org-mode agenda]
   "+" 'org-cycle-list-bullet
   "=" 'org-priority-up
   "-" 'org-priority-down
+  (kbd "C-RET") 'org-insert-heading-respect-content
+  (kbd "RET") 'org-insert-heading-after-current
   (kbd "TAB") 'org-cycle)
 
 #+end_src
@@ -424,4 +421,5 @@ Rgrep is infinitely useful in multi-file projects.
     "o" 'magit-submodule-update
     "t" 'magit-tag
     "z" 'magit-stash))
+
 #+end_src
