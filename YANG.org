@@ -12,8 +12,8 @@
         package-archives )
 (push '("melpa" . "http://melpa.org/packages/")
         package-archives)
-(starter-kit-load "haskell")
-(starter-kit-load "yasnippet")
+;;(starter-kit-load "haskell")
+;;(starter-kit-load "yasnippet")
 (starter-kit-load "org")
 (tool-bar-mode 0) 
 (auto-image-file-mode t)
@@ -52,6 +52,8 @@
 (require 'evil-leader)
 (require 'evil-org)
 (add-to-list 'load-path "~/.emacs.d/elpa/helm")
+(add-to-list 'load-path "~/.emacs.d/elpa/contrib")
+(require 'desktop+)
 (require 'ace-jump-buffer)
 (require 'relative-line-numbers)
 (evil-mode 1)
@@ -71,11 +73,28 @@
 #+BEGIN_SRC emacs-lisp
 (require 'helm-config)
 (helm-mode 1)
+(require 'helm-descbinds)
+(helm-descbinds-mode)
+;;solve the problem of passing args to everyting and grep
+(setq default-process-coding-system '(utf-8 . gbk))
+
 #+END_SRC
 
 ** Settings for color theme
 #+BEGIN_SRC emacs-lisp
-(require 'powerline)
+;;(require 'powerline)
+;;(require 'rich-minority)
+;;(add-to-list 'rm-blacklist " Wrap")
+;;(add-to-list 'rm-blacklist " Undo-Tree")
+;;(add-to-list 'rm-blacklist " EvilOrg")
+;;(add-to-list 'rm-blacklist " Helm")
+;;(add-to-list 'rm-blacklist " yas")
+;;(add-to-list 'rm-blacklist " MRev")
+;;(add-to-list 'rm-blacklist " WS")
+;;(add-to-list 'rm-blacklist " SP")
+;;(add-to-list 'rm-blacklist " Ind")
+;;(add-to-list 'rm-blacklist " AC")
+;;(rich-minority-mode 1)
 (require 'moe-theme)
 (moe-dark)
 ;;(require 'moe-theme-switcher)
@@ -222,4 +241,18 @@
 (transient-mark-mode 0)
 ;;;max startup
 (run-with-idle-timer 1 nil 'w32-send-sys-command 61488)
+
+
+;;(require 'cygwin-mount)
+;;(require 'setup-cygwin)
+
+;;(setq *win32* (eq system-type 'windows-nt) )
+;; win32 auto configuration, assuming that cygwin is installed at "c:/cygwin"
+;;(if *win32*
+;;(progn
+;;    (setq cygwin-mount-cygwin-bin-directory "c:/cygwin/bin")
+;;    (require 'setup-cygwin)
+;;    ;(setenv "HOME" "c:/cygwin/home/someuser") ;; better to set HOME env in GUI
+;;    ))
+
 #+END_SRC
